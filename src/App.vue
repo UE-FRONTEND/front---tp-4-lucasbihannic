@@ -1,23 +1,30 @@
 <template>
-  <div>TODO</div>
+  <div>
+    <inputs @newTodo="handleAddTodo"></inputs>
+  </div>
 </template>
 
 <script>
 import Inputs from "./components/Inputs";
 import TodoItem from "./components/TodoItem";
-
-export default {
-  name: 'App',
-  components: {
-    Inputs,
-    TodoItem
-  },
-  data: function () {
-    return {
-      todos: []
+  export default {
+    name: 'App',
+    components: {
+      Inputs,
+      TodoItem
+    },
+    data() {
+      return {
+        todolist: []
+      };
+    },
+    methods: {
+      handleAddTodo(todo) {
+        this.todolist.push(todo);
+        console.log('Nouvelle tâche ajoutée:', todo);
+      }
     }
-  },
-}
+  };
 </script>
 
 <style>
