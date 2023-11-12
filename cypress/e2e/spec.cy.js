@@ -5,10 +5,17 @@ describe('Make sure our todo list app is working well', () => {
         // Cypress always wait before doing the next action
         // Please, do not copy that line for the rest of the TP.
     })
-    it('Make sure input field is clear after adding a todo', () => {
-        cy.visit("http://127.0.0.1:4000");
-        cy.get('#todo-content').type('Faire à manger');
+    it('Test that field is clear after adding a todo', () => {
+        cy.get('#todo-content').type('Faire à des pâtes');
         cy.get('#todo-button').click();
         cy.get('#todo-content').should('have.value', '');
+    });
+    it('Add new todo and verify it appears in the list', () => {
+        cy.get('#todo-content').type('Manger les pâtes');
+        cy.get('#todo-button').click();
+        cy.contains('Manger les pâtes');
+        cy.get('#todo-content').type('Faire la vaisselle');
+        cy.get('#todo-button').click();
+        cy.contains('Faire la vaisselle');
     });
 })

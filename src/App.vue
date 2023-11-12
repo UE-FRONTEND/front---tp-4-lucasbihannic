@@ -1,6 +1,7 @@
 <template>
   <div>
     <inputs @newTodo="handleAddTodo"></inputs>
+    <todo-item v-for="todo in todolist" :key="todo.id" :todo="todo"></todo-item>
   </div>
 </template>
 
