@@ -14,8 +14,11 @@ describe('Make sure our todo list app is working well', () => {
         cy.get('#todo-content').type('Manger les pâtes');
         cy.get('#todo-button').click();
         cy.contains('Manger les pâtes');
+    });
+    it('Delete a task', () => {
         cy.get('#todo-content').type('Faire la vaisselle');
         cy.get('#todo-button').click();
-        cy.contains('Faire la vaisselle');
+        cy.get('#delete-2').click();
+        cy.contains('Faire la vaisselle').should('not.exist');
     });
 })

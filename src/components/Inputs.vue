@@ -1,7 +1,7 @@
 <template>
   <div>
     <input type="text" id="todo-content" v-model="content" />
-    <button id="todo-button" @click="submitNewTodo">Add</button>
+    <button id="todo-button" @click="submitNewTodo" @deleteTodo="deleteTodo">Add</button>
   </div>
 </template>
 <script>
@@ -20,6 +20,9 @@ export default {
         id: this.id++
       });
       this.content = '';
+    },
+    deleteTodo(todoId) {
+      this.todos = this.todos.filter(todo => todo.id !== todoId);
     }
   }
 };

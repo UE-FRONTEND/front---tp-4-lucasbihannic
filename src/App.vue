@@ -1,7 +1,7 @@
 <template>
   <div>
     <inputs @newTodo="handleAddTodo"></inputs>
-    <todo-item v-for="todo in todolist" :key="todo.id" :todo="todo"></todo-item>
+    <todo-item v-for="todo in todolist" :key="todo.id" :todo="todo" @deleteTodo="deleteTodo"></todo-item>
   </div>
 </template>
 
@@ -23,6 +23,9 @@ import TodoItem from "./components/TodoItem";
       handleAddTodo(todo) {
         this.todolist.push(todo);
         console.log('Nouvelle tâche ajoutée:', todo);
+      },
+      deleteTodo(todoId) {
+        this.todolist = this.todolist.filter(todo => todo.id !== todoId);
       }
     }
   };
